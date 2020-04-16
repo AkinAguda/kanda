@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Input from '../../common/Input';
 import { FormContext } from '../../context/FormContext';
 import { setInputValue } from '../../actions/form';
 
@@ -7,40 +8,45 @@ const Form = (props) => {
     return (
         <form>
             <section role="contentinfo" aria-label="Inputs for first and last names">
-                <input 
+                <Input
                     type="text"
                     onChange={(e) => dispatch(setInputValue(e))}
                     value={values.firstName.value}
                     name="firstName"
+                    label="first name"
                 />
-                <input 
+                <Input
                     type="text"
                     onChange={(e) => dispatch(setInputValue(e))}
                     value={values.lastName.value}
                     name="lastName"
+                    label="last name"
                 />
             </section>
-            <input
+            <Input
                 onChange={(e) => dispatch(setInputValue(e))}
                 value={values.email.value}
                 name="email"
                 type="email"
+                label="email"
             />
             <section role="contentinfo" aria-label="password inputs">
-                <input 
+                <Input
                     type="password"
                     onChange={(e) => dispatch(setInputValue(e))}
                     value={values.password.value}
                     name="password"
+                    label="password"
                 />
-                <input 
-                    type="text"
+                <Input
+                    type="password"
                     onChange={(e) => dispatch(setInputValue(e))}
                     value={values.confirmPassword.value}
                     name="confirmPassword"
+                    label="confrim password"
                 />
             </section>
-            <button type="submit">submit</button>
+            <button type="submit" className="btn btn-primary">submit</button>
         </form>
     )
 }
