@@ -1,13 +1,13 @@
 import React from "react";
-import Form from './components/Form';
-import { FormContextProvider } from './context/FormContext'
+import Form from "./components/Form";
+import { FormContextProvider } from "./context/FormContext";
 
 const App = () => {
   return (
-      <FormContextProvider>
-        <Form />
-      </FormContextProvider>
-      ) 
-}
+    <FormContextProvider>
+      <Form />
+    </FormContextProvider>
+  );
+};
 
 export default App;
