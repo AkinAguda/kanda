@@ -1,1 +1,3 @@
 export const SET_INPUT_VALUE = "SET_INPUT_VALUE";
+export const VALIDATE_INPUTS = "VALIDATE_INPUTS";
+export const VALIDATE_INPUT = " VALIDATE_INPUT";

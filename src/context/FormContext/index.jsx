@@ -4,9 +4,9 @@ import formReducer, { initialState } from "../../reducers/form/form";
 export const FormContext = createContext({ ...initialState });
 
 export const FormContextProvider = ({ children }) => {
-  const [values, dispatch] = useReducer(formReducer, initialState);
+  const [store, dispatch] = useReducer(formReducer, initialState);
   return (
-    <FormContext.Provider value={{ ...values, dispatch }}>
+    <FormContext.Provider value={{ ...store, dispatch }}>
       {children}
     </FormContext.Provider>
   );

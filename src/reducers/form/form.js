@@ -1,15 +1,21 @@
 import * as actionTypes from "../../actions/types";
-import { setInputValue } from "./reduction";
+import { setInputValue, handleValidation } from "./reduction";
 
 export const initialState = {
-  firstName: {
-    value: "",
-    error: { value: false, message: "" },
+  values: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   },
-  lastName: { value: "", error: { value: false, message: "" } },
-  email: { value: "", error: { value: false, message: "" } },
-  password: { value: "", error: { value: false, message: "" } },
-  confirmPassword: { value: "", error: { value: false, message: "" } },
+  errors: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  },
 };
 
 /**
@@ -22,6 +28,8 @@ const formReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_INPUT_VALUE:
       return setInputValue(state, action.payload);
+    case actionTypes.VALIDATE_INPUTS:
+      return handleValidation(state, action.payload);
     default:
       return state;
   }
