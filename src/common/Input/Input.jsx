@@ -1,17 +1,21 @@
 import React from 'react';
-import { computeClassNames } from '../../utils';
-import Classes from "./input.module.scss";
+import { computeClassName } from '../../utils';
+import classes from "./input.module.scss";
 
-const Input = ({id, label, ...props}) => {
+const Input = ({id, label, className, ...props}) => {
     return (
-        <>
+        <div>
             <label 
-                for={id}
-                className={computeClassNames("d-block", Classes.label)}>
+                htmlFor={id}
+                className={classes.label}>
                 {label}
             </label>
-            <input {...props} id={id} />
-        </>
+            <input 
+            {...props}
+             id={id}
+            className={computeClassName( "d-block", "form-control", className)}
+              />
+        </div>
     )
 }
 export default Input;

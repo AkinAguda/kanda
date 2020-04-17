@@ -8,7 +8,7 @@
  * @returns {string}
  */
 
-export const computeClassNames = (...args) =>
+export const computeClassName = (...args) =>
   args.reduce((computedClass, currentClass) => {
     if (typeof currentClass === "string") {
       computedClass += ` ${currentClass}`;
