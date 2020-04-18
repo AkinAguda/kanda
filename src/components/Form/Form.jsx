@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { ReactComponent as ProfileSvg } from "../../svgs/id.svg";
+import { ReactComponent as LockSvg } from "../../svgs/lock.svg";
 import Input from "../../common/Input";
 import { FormContext } from "../../context/FormContext";
 import { validateInputs, handleChange } from "../../actions/form";
@@ -24,6 +26,7 @@ const Form = () => {
           name="firstName"
           label="first name"
           error={errors.firstName}
+          svg={ProfileSvg}
         />
         <Input
           type="text"
@@ -49,11 +52,16 @@ const Form = () => {
       >
         <Input
           type="password"
-          onChange={(e) => handleChange(e, dispatch, errors)}
+          onChange={(e) =>
+            handleChange(e, dispatch, errors, {
+              confirmPassword: values.confirmPassword,
+            })
+          }
           value={values.password}
           name="password"
           label="password"
           error={errors.password}
+          svg={LockSvg}
         />
         <Input
           type="password"
@@ -64,6 +72,7 @@ const Form = () => {
           name="confirmPassword"
           label="confrim password"
           error={errors.confirmPassword}
+          scg={LockSvg}
         />
       </section>
       <button
