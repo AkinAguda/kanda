@@ -52,11 +52,7 @@ const Form = () => {
       >
         <Input
           type="password"
-          onChange={(e) =>
-            handleChange(e, dispatch, errors, {
-              confirmPassword: values.confirmPassword,
-            })
-          }
+          onChange={(e) => handleChange(e, dispatch, errors)}
           value={values.password}
           name="password"
           label="password"

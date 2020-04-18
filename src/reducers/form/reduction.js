@@ -1,5 +1,6 @@
 /**
- *
+ * This function sets all the errors to be displayed
+ * when input validation occurs
  * @param {Object} state
  * @param {Object} payload
  */
