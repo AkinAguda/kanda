@@ -21,13 +21,19 @@ export const computeClassName = (...args) =>
     return computedClass;
   });
 
-export const validationSchema = yup.object().shape({
-  firstName: yup.string().max(16).min(5).required(),
-  lastName: yup.string().max(16).min(5).required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(8).required(),
+export const passwordSchema = yup.object().shape({
+  password: yup.string().required("Password is required"),
   confirmPassword: yup
     .string()
-    .required()
+    .required("Password Confirmation is required")
     .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
+
+export const validationSchema = yup
+  .object()
+  .shape({
+    firstName: yup.string().min(5).required("First Name is required"),
+    lastName: yup.string().min(5).required("Last Name is required"),
+    email: yup.string().email().required("Email is required"),
+  })
+  .concat(passwordSchema);

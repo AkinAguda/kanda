@@ -1,20 +1,14 @@
 import React, { useContext } from "react";
 import Input from "../../common/Input";
 import { FormContext } from "../../context/FormContext";
-import { setInputValue, validateInputs } from "../../actions/form";
+import { validateInputs, handleChange } from "../../actions/form";
 import { computeClassName } from "../../utils";
 import classes from "./form.module.scss";
 
 const Form = () => {
   const { dispatch, values, errors } = useContext(FormContext);
-  console.log(errors);
   return (
-    <form
-      className={computeClassName(
-        "shadow-sm p-4 mb-5 mt-5 bg-white rounded",
-        classes.form
-      )}
-    >
+    <form>
       <h2 className={computeClassName("mb-5 bt-0", classes.header)}>
         Kanda Exam
       </h2>
@@ -25,7 +19,7 @@ const Form = () => {
       >
         <Input
           type="text"
-          onChange={(e) => dispatch(setInputValue(e))}
+          onChange={(e) => handleChange(e, dispatch, errors)}
           value={values.firstName}
           name="firstName"
           label="first name"
@@ -33,7 +27,7 @@ const Form = () => {
         />
         <Input
           type="text"
-          onChange={(e) => dispatch(setInputValue(e))}
+          onChange={(e) => handleChange(e, dispatch, errors)}
           value={values.lastName}
           name="lastName"
           label="last name"
@@ -41,12 +35,11 @@ const Form = () => {
         />
       </section>
       <Input
-        onChange={(e) => dispatch(setInputValue(e))}
+        onChange={(e) => handleChange(e, dispatch, errors)}
         value={values.email}
         name="email"
         type="email"
         label="email"
-        className="mb-3"
         error={errors.email}
       />
       <section
@@ -56,7 +49,7 @@ const Form = () => {
       >
         <Input
           type="password"
-          onChange={(e) => dispatch(setInputValue(e))}
+          onChange={(e) => handleChange(e, dispatch, errors)}
           value={values.password}
           name="password"
           label="password"
@@ -64,7 +57,9 @@ const Form = () => {
         />
         <Input
           type="password"
-          onChange={(e) => dispatch(setInputValue(e))}
+          onChange={(e) =>
+            handleChange(e, dispatch, errors, { password: values.password })
+          }
           value={values.confirmPassword}
           name="confirmPassword"
           label="confrim password"
@@ -76,7 +71,7 @@ const Form = () => {
         className={computeClassName("btn btn-primary mt-4", classes.submit)}
         onClick={(e) => {
           e.preventDefault();
-          dispatch(validateInputs({ ...values, dispatch }));
+          validateInputs({ ...values }, dispatch);
         }}
       >
         submit
