@@ -68,7 +68,7 @@ const Form = () => {
           name="confirmPassword"
           label="confrim password"
           error={errors.confirmPassword}
-          scg={LockSvg}
+          svg={LockSvg}
         />
       </section>
       <button
